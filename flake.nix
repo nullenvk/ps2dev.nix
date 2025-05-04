@@ -22,6 +22,7 @@
         devShells.default = pkgs.mkShell {
           nativeBuildInputs = [ 
             self'.packages.dvp-binutils
+            self'.packages.iop-binutils
           ];
         };
       };

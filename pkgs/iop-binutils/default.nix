@@ -19,6 +19,7 @@ stdenv.mkDerivation {
         pkgs.gnumake
         pkgs.flex
         pkgs.bison
+        pkgs.perl
     ];
 
     patches = [
@@ -27,7 +28,7 @@ stdenv.mkDerivation {
 
     configureFlags = [
         "--target=mipsel-none-elf"
-        "--program-prefix=iop"
+        "--program-prefix=iop-"
         "--disable-separate-code"
         "--disable-sim"
         "--disable-nls"
