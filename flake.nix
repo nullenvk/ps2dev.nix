@@ -17,6 +17,7 @@
         packages = {
           dvp-binutils = pkgs.callPackage ./pkgs/dvp-binutils {}; 
           iop-binutils = pkgs.callPackage ./pkgs/iop-binutils {};
+          ee-binutils = pkgs.callPackage ./pkgs/ee-binutils {};
 
           ee-stage1-gcc = pkgs.callPackage ./pkgs/ee-stage1-gcc {};
         };
@@ -25,6 +26,13 @@
           nativeBuildInputs = [ 
             self'.packages.dvp-binutils
             self'.packages.iop-binutils
+          ];
+        };
+
+        devShells.ee-stage1 = pkgs.mkShell {
+          nativeBuildInputs = [
+            self'.packages.ee-stage1-gcc
+            self'.packages.ee-binutils
           ];
         };
       };

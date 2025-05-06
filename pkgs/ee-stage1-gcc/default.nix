@@ -7,7 +7,7 @@ stdenv.mkDerivation {
         owner = "ps2dev";
         repo = "gcc";
         rev = "6247ca1b3695a76aae19fb7f88acc72e05850771"; # iop-v2.44.0 branch
-        #hash = "sha256-BMUnRzm231ipMvbWzewtmyVZ6z5rWmpEK4UCaiai55M=";
+        hash = "sha256-3oY8/oYna+sZ1+qy1MXAJKAQDiSFzTdbooaKxxAxYTE=";
     };
 
     buildInputs = [

@@ -10,7 +10,7 @@ stdenv.mkDerivation {
         hash = "sha256-BMUnRzm231ipMvbWzewtmyVZ6z5rWmpEK4UCaiai55M=";
     };
 
-    buildInputs = [
+    nativeBuildInputs = [
         pkgs.gcc
         pkgs.gmp
         pkgs.libmpc
@@ -20,6 +20,7 @@ stdenv.mkDerivation {
         pkgs.flex
         pkgs.bison
         pkgs.perl
+        pkgs.m4
     ];
 
     patches = [
