@@ -17,6 +17,8 @@
         packages = {
           dvp-binutils = pkgs.callPackage ./pkgs/dvp-binutils {}; 
           iop-binutils = pkgs.callPackage ./pkgs/iop-binutils {};
+
+          ee-stage1-gcc = pkgs.callPackage ./pkgs/ee-stage1-gcc {};
         };
 
         devShells.default = pkgs.mkShell {
