@@ -1,13 +1,13 @@
 {stdenv, pkgs}:
 stdenv.mkDerivation {
-    pname = "iop-binutils";
+    pname = "ee-binutils";
     version = "2.44.0";
 
     src = pkgs.fetchFromGitHub {
         owner = "ps2dev";
         repo = "binutils-gdb";
-        rev = "8eb2cecff5a113ae3931732897d26659d9434006"; # iop-v2.44.0 branch
-        hash = "sha256-BMUnRzm231ipMvbWzewtmyVZ6z5rWmpEK4UCaiai55M=";
+        rev = "94bfc7644361b2d610a60203372c7bd676b38606"; # ee-v2.44.0 branch
+        hash = "sha256-g0YihbgEW1SsGbgi8r1iKqUj8sJmJE2Y3gVvm+98bAc=";
     };
 
     buildInputs = [
@@ -19,6 +19,7 @@ stdenv.mkDerivation {
         pkgs.gnumake
         pkgs.flex
         pkgs.bison
+        pkgs.perl
     ];
 
     patches = [
@@ -27,7 +28,7 @@ stdenv.mkDerivation {
 
     configureFlags = [
         "--target=mips64r5900el-ps2-elf"
-        "--program-prefix=iop"
+        "--program-prefix=ee-"
         "--disable-separate-code"
         "--disable-sim"
         "--disable-nls"

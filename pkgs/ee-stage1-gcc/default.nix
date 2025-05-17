@@ -1,14 +1,19 @@
-{stdenv, pkgs}:
+{stdenv, pkgs, binutils}:
 stdenv.mkDerivation {
-    pname = "iop-stage1-gcc";
+    pname = "ee-stage1-gcc";
     version = "2.44.0";
 
     src = pkgs.fetchFromGitHub {
         owner = "ps2dev";
         repo = "gcc";
-        rev = "6247ca1b3695a76aae19fb7f88acc72e05850771"; # iop-v2.44.0 branch
-        hash = "sha256-3oY8/oYna+sZ1+qy1MXAJKAQDiSFzTdbooaKxxAxYTE=";
+        rev = "5c68fdf5209b133fb878dee62035eb8ff3ae4024"; # ee-v14.2.0
+        hash = "sha256-SsFk3Nlg6AR+wV/VHKdvDNBkbFw9yK029JUNxdYxEds="; 
     };
+
+    patches = [
+        # TODO: Port source date epoch patches
+        #./use-source-date-epoch.patch
+    ];
 
     buildInputs = [
         pkgs.gcc
@@ -20,10 +25,16 @@ stdenv.mkDerivation {
         pkgs.flex
         pkgs.bison
     ];
+    
+    nativeInputs = [
+        binutils
+    ];
 
     configureFlags = [
         "--target=mips64r5900el-ps2-elf"
-        "--program-prefix=iop-stage1-"
+        "--program-prefix=ee-stage1-"
+        "--with-as=${binutils}/bin/ee-as"
+        "--with-ld=${binutils}/bin/ee-ld"
         "--enable-languages=c"
         "--with-float=hard"
         "--without-headers"
