@@ -1,4 +1,4 @@
-{stdenv, pkgs}:
+{stdenv, pkgs, ...}:
 stdenv.mkDerivation {
     pname = "ee-binutils";
     version = "2.44.0";

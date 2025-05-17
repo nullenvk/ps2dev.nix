@@ -1,4 +1,7 @@
-{stdenv, pkgs, binutils}:
+{stdenv, pkgs, ps2pkgs}:
+let
+    binutils = ps2pkgs.ee-binutils;
+in
 stdenv.mkDerivation {
     pname = "ee-stage1-gcc";
     version = "2.44.0";

@@ -1,4 +1,4 @@
-{stdenv, pkgs}:
+{stdenv, pkgs, ...}:
 stdenv.mkDerivation {
     pname = "dvp-binutils";
     version = "2.44.0";

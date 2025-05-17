@@ -14,14 +14,19 @@
       systems = [ "x86_64-linux" ];
       perSystem = { config, self', inputs', pkgs, system, ... }: {
 
-        packages = rec {
-          dvp-binutils = pkgs.callPackage ./pkgs/dvp-binutils {}; 
-          iop-binutils = pkgs.callPackage ./pkgs/iop-binutils {};
-          ee-binutils = pkgs.callPackage ./pkgs/ee-binutils {};
-
-          ee-stage1-gcc = pkgs.callPackage ./pkgs/ee-stage1-gcc {
-            binutils = ee-binutils;
+        packages = let
+          pkgAttrs = {
+            ps2pkgs = self'.packages;
           };
+
+          callPkg = pkgs.callPackage;
+        in {
+          dvp-binutils = callPkg ./pkgs/dvp-binutils pkgAttrs; 
+          iop-binutils = callPkg ./pkgs/iop-binutils pkgAttrs;
+
+          ee-binutils = callPkg ./pkgs/ee-binutils pkgAttrs;
+          ee-stage1-gcc = callPkg ./pkgs/ee-stage1-gcc pkgAttrs;
+          ee-newlib = callPkg ./pkgs/ee-newlib pkgAttrs;
         };
 
         devShells.default = pkgs.mkShell {
