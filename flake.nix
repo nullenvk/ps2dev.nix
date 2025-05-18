@@ -42,6 +42,7 @@
           nativeBuildInputs = [
             self'.packages.ee-stage1-gcc
             self'.packages.ee-binutils
+            self'.packages.ee-newlib
           ];
         };
       };

@@ -1,6 +1,9 @@
 {pkgs, ps2pkgs, ...}:
+let 
+    ps2Target = "mips64r5900el-ps2-elf";
+in
 pkgs.stdenv.mkDerivation rec {
-    pname = "ee-newlib";
+    pname = "ee-pthread-embedded";
     version = "20240403";
 
     src = pkgs.fetchFromGitHub {
@@ -21,6 +24,11 @@ pkgs.stdenv.mkDerivation rec {
     ];
 
     sourceRoot = "${src.name}/platform/ps2";
+
+    preBuild = ''
+        makeFlagsArray+=(GLOBAL_CFLAGS="-I. -I../.. -I../helper -I${ps2pkgs.ee-newlib}/${ps2Target}/include")
+        makeFlagsArray+=(DESTDIR="$out/${ps2Target}")
+    '';
 
     dontDisableStatic = true;
     hardeningDisable = ["all"];

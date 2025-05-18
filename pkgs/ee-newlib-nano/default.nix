@@ -3,7 +3,7 @@ let
     ps2Target = "mips64r5900el-ps2-elf";
 in
 pkgs.stdenv.mkDerivation {
-    pname = "ee-newlib";
+    pname = "ee-newlib-nano";
     version = "4.5.0";
 
     NIX_CFLAGS_COMPILE = "-DPREFER_SIZE_OVER_SPEED=1 -Os -gdwarf-2 -gz";
