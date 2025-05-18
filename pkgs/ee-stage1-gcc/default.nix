@@ -33,11 +33,16 @@ stdenv.mkDerivation {
         binutils
     ];
 
-    configureFlags = [
-        "--target=mips64r5900el-ps2-elf"
-        "--program-prefix=ee-stage1-"
-        "--with-as=${binutils}/bin/ee-as"
-        "--with-ld=${binutils}/bin/ee-ld"
+    configureFlags =
+    let
+        target = "mips64r5900el-ps2-elf";
+    in [
+        "--target=${target}"
+        "--with-as=${binutils}/bin/${target}-as"
+        "--with-ld=${binutils}/bin/${target}-ld"
+        #"--program-prefix=ee-stage1-"
+        #"--with-as=${binutils}/bin/ee-as"
+        #"--with-ld=${binutils}/bin/ee-ld"
         "--enable-languages=c"
         "--with-float=hard"
         "--without-headers"

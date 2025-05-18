@@ -28,7 +28,7 @@ stdenv.mkDerivation {
 
     configureFlags = [
         "--target=mips64r5900el-ps2-elf"
-        "--program-prefix=ee-"
+        #"--program-prefix=ee-"
         "--disable-separate-code"
         "--disable-sim"
         "--disable-nls"
