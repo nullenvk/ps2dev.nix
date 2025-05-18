@@ -27,6 +27,8 @@
           ee-binutils = callPkg ./pkgs/ee-binutils pkgAttrs;
           ee-stage1-gcc = callPkg ./pkgs/ee-stage1-gcc pkgAttrs;
           ee-newlib = callPkg ./pkgs/ee-newlib pkgAttrs;
+          ee-newlib-nano = callPkg ./pkgs/ee-newlib-nano pkgAttrs;
+          ee-pthread-embedded = callPkg ./pkgs/ee-pthread-embedded pkgAttrs;
         };
 
         devShells.default = pkgs.mkShell {
